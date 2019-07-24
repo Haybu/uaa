@@ -49,7 +49,7 @@ import java.util.stream.Collectors;
  * @author Luke Taylor
  *
  */
-//@Controller
+@Controller
 public class UserIdConversionEndpoints implements InitializingBean {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 

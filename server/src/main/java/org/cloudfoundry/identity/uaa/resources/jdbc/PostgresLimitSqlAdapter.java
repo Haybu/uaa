@@ -15,6 +15,11 @@
 
 package org.cloudfoundry.identity.uaa.resources.jdbc;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
+
+@Component
+@Profile("postgresql")
 public class PostgresLimitSqlAdapter implements LimitSqlAdapter {
     @Override
     public String getDeleteExpiredQuery(String tablename, String primaryKeyColumn, String expiresColumn, int maxRows) {

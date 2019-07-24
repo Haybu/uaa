@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.cloudfoundry.identity.uaa.db;
 
-import javax.sql.DataSource;
+import org.apache.tomcat.jdbc.pool.DataSource;
 
 public class DataSourceAccessor {
 

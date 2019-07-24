@@ -15,13 +15,19 @@
 
 package org.cloudfoundry.identity.uaa.db;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class DatabaseUrlModifier {
 
     private final Vendor databaseType;
     private final String url;
     private int connectTimeoutSeconds = 10;
 
-    public DatabaseUrlModifier(Vendor databaseType, String url) {
+    public DatabaseUrlModifier(@Value("${spring.datasource.platform}") Vendor databaseType
+            ,@Value("${database.url}") String url
+            ,@Value("${database.connectionTimeout:10}") int connectTimeoutSeconds) {
         if (databaseType==null) {
             throw new NullPointerException();
         }

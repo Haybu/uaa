@@ -15,6 +15,11 @@
 
 package org.cloudfoundry.identity.uaa.resources.jdbc;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
+
+@Component("limitSqlAdapter")
+@Profile("default,hsqldb")
 public class HsqlDbLimitSqlAdapter implements LimitSqlAdapter {
 
     @Override

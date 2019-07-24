@@ -1,11 +1,15 @@
 package org.cloudfoundry.identity.uaa.db;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class UaaDatabaseName {
     private static final String UAA_DB_NAME = "uaa";
 
     private final String gradleWorkerId;
 
-    public UaaDatabaseName(String gradleWorkerId) {
+    public UaaDatabaseName(@Value("org.gradle.test.worker")String gradleWorkerId) {
         this.gradleWorkerId = gradleWorkerId;
     }
 

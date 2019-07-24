@@ -1,3 +1,51 @@
 spring:
   main:
     allow-bean-definition-overriding: true
+  datasource:
+    platform: hsqldb
+    url: jdbc:hsqldb:mem:${org.gradle.test.worker}
+    driver-class-name: org.hsqldb.jdbcDriver
+    username: sa
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    validationInterval: 5000
+    validationQuery: select 1 from information_schema.system_users
+    testOnBorrow: true
+    minIdle: 0
+    maxActive: 100
+    maxIdle: 10
+    initialSize: 10
+    validationQueryTimeout: 10
+    removeAbandoned: false
+    logAbandoned: true
+    removeAbandonedTimeout: 300
+    timeBetweenEvictionRunsMillis: 15000
+    jdbcInterceptors: org.cloudfoundry.identity.uaa.metrics.QueryFilter(threshold=3000)
+
+---
+spring:
+  profiles: mysql
+  datasource:
+    platform: mysql
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/${org.gradle.test.worker}
+    username: root
+    password: changeme
+    validationQuery: select 1
+
+---
+spring:
+  profiles: postgresql
+  datasource:
+    platform: postgresql
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql:${org.gradle.test.worker}
+    username: root
+    password: changeme
+    validationQuery: select 1
+
+---
+spring:
+  profiles: hsqldb
+  datasource:
+    platform: hsqldb
+

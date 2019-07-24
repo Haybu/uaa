@@ -1,12 +1,21 @@
 package org.cloudfoundry.identity.uaa.impl.config;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.EnvironmentAware;
-import org.springframework.core.env.*;
-
-import java.util.*;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.EnumerablePropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.PropertySource;
+import org.springframework.core.env.StandardEnvironment;
 
 /**
  * Factory for Maps that reads from the Spring context {@link Environment} where
@@ -14,6 +23,9 @@ import java.util.*;
  *
  * @author Dave Syer
  */
+
+//TODO: obsolete?
+
 public class EnvironmentMapFactoryBean implements FactoryBean<Map<String, ?>>, EnvironmentAware {
 
     private static Logger logger = LoggerFactory.getLogger(EnvironmentMapFactoryBean.class);
